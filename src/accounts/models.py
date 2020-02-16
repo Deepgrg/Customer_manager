@@ -44,3 +44,5 @@ class Order(models.Model):
     product = models.ForeignKey(Product , on_delete=models.CASCADE)
     status = models.CharField(max_length=150 , null=True ,choices = STATUS )
     
+    def __str__(self):
+        return self.product.name
