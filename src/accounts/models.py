@@ -27,7 +27,6 @@ class Product(models.Model):
     price = models.FloatField(null = True)
     category = models.CharField(max_length=150 , null=True , choices=CATEGORY)
     description = models.TextField(max_length=150 , null=True)
-    date_created = models.DateTimeField(auto_now_add=True)
     tags= models.ManyToManyField(Tag)
 
     def __str__(self):
@@ -43,6 +42,8 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer ,on_delete=models.CASCADE)
     product = models.ForeignKey(Product , on_delete=models.CASCADE)
     status = models.CharField(max_length=150 , null=True ,choices = STATUS )
+    date_created = models.DateTimeField(auto_now_add=True)
+
     
     def __str__(self):
         return self.product.name
